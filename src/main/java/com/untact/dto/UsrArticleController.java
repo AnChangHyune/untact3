@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.untact.controller.Article;
+import com.untact.utill.Utill;
 
 @Controller
 public class UsrArticleController {
@@ -37,7 +38,9 @@ public class UsrArticleController {
 
 	@RequestMapping("/usr/article/doAdd")
 	@ResponseBody
-	public Map<String, Object> doAdd(String regDate, String title, String body) {
+	public Map<String, Object> doAdd(String title, String body) {
+		String regDate = Utill.getNowDateStr();
+		
 		articles.add(new Article(++articlesLastId, regDate, title, body));
 
 		Map<String, Object> rs = new HashMap<>();
